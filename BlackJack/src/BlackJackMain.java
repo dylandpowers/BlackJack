@@ -9,6 +9,11 @@ public class BlackJackMain {
 		deck.initialDraw();
 	}
 	
+	/**
+	 * Called when it is the player's turn to hit (always first).
+	 * The player can either hit, pass, or view their current hand.
+	 * After this is called, the dealer has its turn. 
+	 */
 	public void playerTurn() {
 		Scanner scanner = new Scanner(System.in);
 		
@@ -33,6 +38,13 @@ public class BlackJackMain {
 		scanner.close();
 	}
 	
+	
+	/**
+	 * This is called after the player finishes.
+	 * The dealer is designed to hit only when its total is less than 16.
+	 * There is a 2-second pause in between decisions made by the dealer.
+	 * @throws InterruptedException
+	 */
 	public void dealerTurn() throws InterruptedException {
 		
 		while (true) {
@@ -55,6 +67,11 @@ public class BlackJackMain {
 		}
 	}
 	
+	
+	/**
+	 * Determines the winner based upon the results
+	 * of the above two methods.
+	 */
 	public void determineWinner() {
 		if (deck.getDealerTotal() > deck.getPlayerTotal())
 			System.out.println("You lose. You had " + deck.getPlayerTotal() + " and the dealer had " + deck.getDealerTotal()+ ".\n");
@@ -66,9 +83,9 @@ public class BlackJackMain {
 	
 	public static void main(String[] args) throws InterruptedException {
 		BlackJackMain bjm = new BlackJackMain();
-			bjm.playerTurn();
-			bjm.dealerTurn();
-			bjm.determineWinner();
+		bjm.playerTurn();
+		bjm.dealerTurn();
+		bjm.determineWinner();
 	}
 
 }
