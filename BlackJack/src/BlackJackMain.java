@@ -2,7 +2,6 @@ import java.util.*;
 
 public class BlackJackMain {
 	public Card deck;
-	private static boolean desiresPlay = true;
 	
 	public BlackJackMain() {
 		deck = new Card();
