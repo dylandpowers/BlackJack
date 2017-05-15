@@ -82,7 +82,7 @@ public class BlackJackMain {
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
-		BlackJackMain bjm = new BlackJackMain();
+		BlackJackMain bjm  = new BlackJackMain();
 		bjm.playerTurn();
 		bjm.dealerTurn();
 		bjm.determineWinner();
