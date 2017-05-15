@@ -43,6 +43,10 @@ public class Card {
 		return myTotal;
 	}
 	
+	public void invertAce() {
+		myAce = !myAce;
+	}
+	
 	//Returns dealer's total
 	public int getDealerTotal() {
 		return dealerTotal;
@@ -128,6 +132,7 @@ public class Card {
 		String card2 = drawCard(true);
 		String dealer1 = drawCard(false);
 		String dealer2 = drawCard(false);
+
 		
 		//Prints hands
 		System.out.println("The dealer drew a " + dealer1 + " and the other card is hidden.");

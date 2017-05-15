@@ -2,6 +2,7 @@ import java.util.*;
 
 public class BlackJackMain {
 	public Card deck; 
+	private boolean playerLost = false;
 	
 	public BlackJackMain() {
 		deck = new Card();
@@ -24,9 +25,11 @@ public class BlackJackMain {
 				System.out.println("Your new total is " + deck.getPlayerTotal());
 				if (deck.getPlayerTotal() > 21 && !deck.hasAce(true)) {
 					System.out.println("You lose!");
+					playerLost = true;
 					break;
 				} else if (deck.getPlayerTotal() > 21 && deck.hasAce(true)) {
 					deck.changeTotal(10, true);
+					deck.invertAce();
 					System.out.println("You went over 21, your Ace is being used as a 1 now.\n Your new total is " + deck.getPlayerTotal() + "\n");
 				}
 			} else if (answer.equals("view")) {
@@ -46,7 +49,7 @@ public class BlackJackMain {
 	 */
 	public void dealerTurn() throws InterruptedException {
 		
-		while (true) {
+		while (!playerLost) {
 			if (deck.getDealerTotal() < 16) {
 				System.out.println("The dealer chose to hit.\n");
 				deck.drawCard(false);
@@ -84,7 +87,8 @@ public class BlackJackMain {
 		BlackJackMain bjm  = new BlackJackMain();
 		bjm.playerTurn();
 		bjm.dealerTurn();
-		bjm.determineWinner();
+		if (!bjm.playerLost)
+			bjm.determineWinner();
 	}
 
 }
