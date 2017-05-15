@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class BlackJackMain {
-	public Card deck;
+	public Card deck; 
 	
 	public BlackJackMain() {
 		deck = new Card();
