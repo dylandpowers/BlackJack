@@ -3,6 +3,7 @@ import java.util.*;
 public class BlackJackMain {
 	public Card deck; 
 	private boolean playerLost = false;
+	private boolean dealerLost = false;
 	
 	public BlackJackMain() {
 		deck = new Card();
@@ -58,6 +59,7 @@ public class BlackJackMain {
 				}
 				if (deck.getDealerTotal() > 21 && !deck.hasAce(true)) {
 					System.out.println("The dealer's total is " + deck.getDealerTotal() + ". You win!");
+					dealerLost = true;
 					break;
 				} else if (deck.getDealerTotal() > 21 && deck.hasAce(true)) {
 					deck.changeTotal(10, false);
@@ -86,10 +88,10 @@ public class BlackJackMain {
 	public static void main(String[] args) throws InterruptedException {
 		BlackJackMain bjm  = new BlackJackMain();
 		bjm.playerTurn();
-		if (!bjm.playerLost) {
+		if (!bjm.playerLost) 
 			bjm.dealerTurn();
+		if (!bjm.dealerLost)
 			bjm.determineWinner();
-		}
 			
 	}
 
